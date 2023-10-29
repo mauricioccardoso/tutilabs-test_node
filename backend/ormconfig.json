@@ -1,9 +1,9 @@
 {
   "type": "mysql",
-  "port": 3306,
   "host": "database",
-  "username": "user",
-  "password": "mypassword",
+  "port": 3306,
+  "username": "root",
+  "password": "mypasswordroot",
   "database": "tutilabsdb",
   "migrations": ["./src/infrastructure/database/typeorm/migrations/*.ts"],
   "entities": [
