@@ -1,0 +1,16 @@
+{
+  "type": "mysql",
+  "port": 3306,
+  "host": "database",
+  "username": "user",
+  "password": "mypassword",
+  "database": "tutilabsdb",
+  "migrations": ["./src/infrastructure/database/typeorm/migrations/*.ts"],
+  "entities": [
+    "src/domain/entities/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/domain/entities",
+    "migrationsDir": "./src/infrastructure/database/typeorm/migrations"
+  }
+}
