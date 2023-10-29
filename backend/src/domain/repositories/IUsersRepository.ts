@@ -13,6 +13,8 @@ interface IUsersRepository {
   findByEmail(email: string): Promise<User>;
 
   findByCPF(cpf: string): Promise<User>;
+
+  list(setor? : string): Promise<User[]>;
 }
 
 export { IUsersRepository };

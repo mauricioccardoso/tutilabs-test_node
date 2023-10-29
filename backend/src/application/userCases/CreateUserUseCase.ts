@@ -29,7 +29,7 @@ class CreateUserUseCase {
     userAlreadyExists = await this.usersRepository.findByCPF(cpf);
 
     if (userAlreadyExists) {
-      throw new AppError("User already exists");
+      throw new AppError("User with this CPF already exists");
     }
 
     const passwordHash = await hash(senha, 8);

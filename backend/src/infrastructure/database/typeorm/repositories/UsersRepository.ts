@@ -5,7 +5,7 @@ import { IUsersRepository } from "@domain/repositories/IUsersRepository";
 import { ICreateUserDTO } from "@application/DTO/ICreateUsersDTO";
 
 class UsersRepository implements IUsersRepository {
-  private repository: Repository<User>;
+  private repository : Repository<User>;
 
   constructor() {
     this.repository = getRepository(User);
@@ -18,7 +18,7 @@ class UsersRepository implements IUsersRepository {
     setor,
     email,
     senha
-  }: ICreateUserDTO): Promise<void> {
+  } : ICreateUserDTO) : Promise<void> {
     const user = this.repository.create({
       id,
       cpf,
@@ -30,7 +30,7 @@ class UsersRepository implements IUsersRepository {
     await this.repository.save(user);
   }
 
-  async findByEmail(email: string): Promise<User> {
+  async findByEmail(email : string) : Promise<User> {
     const user = await this.repository.findOne({ email });
     return user;
   }
@@ -39,5 +39,18 @@ class UsersRepository implements IUsersRepository {
     const user = await this.repository.findOne({ cpf });
     return user;
   }
+
+  async list(setor? : string) : Promise<User[]> {
+    if(setor) {
+      const usersBySetor = await this.repository.find({
+        where: { setor }
+      });
+      return usersBySetor;
+    }
+
+    const users = await this.repository.find();
+    return users;
+  }
 }
+
 export { UsersRepository };
