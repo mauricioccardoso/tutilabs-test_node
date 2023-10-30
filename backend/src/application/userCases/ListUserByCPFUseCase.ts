@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 
 import { IUsersRepository } from "@domain/repositories/IUsersRepository";
 import { IUserResponseDTO } from "@application/DTO/IUserResponseDTO";
+import { AppError } from "@shared/errors/AppError";
 
 @injectable()
 class ListUserByCPFUseCase {
@@ -12,8 +13,14 @@ class ListUserByCPFUseCase {
   }
 
   async execute(cpf : string) : Promise<IUserResponseDTO> {
-    const {senha, ...user } = await this.usersRepository.findByCPF(cpf);
-    return user;
+    const user = await this.usersRepository.findByCPF(cpf);
+
+    if (! user) {
+      throw new AppError("User does not exists");
+    }
+
+    const {senha, ...userFormatted } = user;
+    return userFormatted;
   }
 }
 
