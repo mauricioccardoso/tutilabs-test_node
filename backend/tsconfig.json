@@ -14,6 +14,7 @@
       "@infrastructure/*": ["infrastructure/*"],
       "@presentation/*": ["presentation/*"],
       "@shared/*": ["shared/*"],
+      "@config/*": ["config/*"],
     },
 
     "resolveJsonModule": true,
