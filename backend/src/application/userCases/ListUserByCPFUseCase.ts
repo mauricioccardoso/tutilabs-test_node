@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 
 import { IUsersRepository } from "@domain/repositories/IUsersRepository";
-import { User } from "@domain/entities/typeorm/User";
+import { IUserResponseDTO } from "@application/DTO/IUserResponseDTO";
 
 @injectable()
 class ListUserByCPFUseCase {
@@ -11,8 +11,8 @@ class ListUserByCPFUseCase {
   ) {
   }
 
-  async execute(cpf : string) : Promise<User> {
-    const user = await this.usersRepository.findByCPF(cpf);
+  async execute(cpf : string) : Promise<IUserResponseDTO> {
+    const {senha, ...user } = await this.usersRepository.findByCPF(cpf);
     return user;
   }
 }

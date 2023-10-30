@@ -44,13 +44,15 @@ class UsersRepository implements IUsersRepository {
     if(setor) {
       const usersBySetor = await this.repository.find({
         where: { setor },
-        order: { nome : "ASC" }
+        order: { nome : "ASC" },
+        select: ["id", "cpf", "nome", "setor", "email", "created_at"]
       });
       return usersBySetor;
     }
 
     const users = await this.repository.find({
-      order: { nome : "ASC" }
+      order: { nome : "ASC" },
+      select: ["id", "cpf", "nome", "setor", "email", "created_at"]
     });
     return users;
   }
