@@ -43,13 +43,21 @@ class UsersRepository implements IUsersRepository {
   async list(setor? : string) : Promise<User[]> {
     if(setor) {
       const usersBySetor = await this.repository.find({
-        where: { setor }
+        where: { setor },
+        order: { nome : "ASC" }
       });
       return usersBySetor;
     }
 
-    const users = await this.repository.find();
+    const users = await this.repository.find({
+      order: { nome : "ASC" }
+    });
     return users;
+  }
+
+  async findById(id : string) : Promise<User> {
+    const user = await this.repository.findOne({ id });
+    return user;
   }
 }
 

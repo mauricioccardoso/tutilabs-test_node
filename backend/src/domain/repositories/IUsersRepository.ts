@@ -14,6 +14,8 @@ interface IUsersRepository {
 
   findByCPF(cpf: string): Promise<User>;
 
+  findById(id: string): Promise<User>;
+
   list(setor? : string): Promise<User[]>;
 }
 
