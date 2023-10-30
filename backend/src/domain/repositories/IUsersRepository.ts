@@ -17,6 +17,8 @@ interface IUsersRepository {
   findById(id: string): Promise<User>;
 
   list(setor? : string): Promise<User[]>;
+
+  delete(id : string): Promise<void>;
 }
 
 export { IUsersRepository };
