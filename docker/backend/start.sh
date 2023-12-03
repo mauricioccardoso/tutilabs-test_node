@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/node/backend
+cd /home/node/backend/backend
 
 if [ -e /home/node/backend/package.json ]; then
   echo -e "\e[32m Project found \e[0m"

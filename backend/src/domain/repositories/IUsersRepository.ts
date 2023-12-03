@@ -2,13 +2,7 @@ import { ICreateUserDTO } from "@application/DTO/ICreateUsersDTO";
 import { User } from "@domain/entities/typeorm/User";
 
 interface IUsersRepository {
-  create({
-    cpf,
-    nome,
-    setor,
-    email,
-    senha
-  }: ICreateUserDTO): Promise<void>;
+  create({ cpf, nome, setor, email, senha }: ICreateUserDTO): Promise<void>;
 
   findByEmail(email: string): Promise<User>;
 
@@ -16,9 +10,9 @@ interface IUsersRepository {
 
   findById(id: string): Promise<User>;
 
-  list(setor? : string): Promise<User[]>;
+  list(setor?: string): Promise<User[]>;
 
-  delete(id : string): Promise<void>;
+  delete(id: string): Promise<void>;
 }
 
 export { IUsersRepository };
